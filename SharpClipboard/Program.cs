@@ -74,7 +74,9 @@ public sealed class ClipboardNotification
             //Listen for operating system messages
             if (m.Msg == NativeMethods.WM_CLIPBOARDUPDATE)
             {
-                Console.WriteLine("Copy event detected!");
+                //Get the date and time for the current moment expressed as coordinated universal time (UTC).
+                DateTime saveUtcNow = DateTime.UtcNow;
+                Console.WriteLine("Copy event detected at {0} (UTC)!", saveUtcNow);
 
                 //Write to stdout active window
                 IntPtr active_window = NativeMethods.GetForegroundWindow();
